@@ -36,10 +36,9 @@ end
 
 Vagrant.configure("2") do |config|
   # always use Vagrants insecure key
-  config.ssh.insert_key = true
-  config.ssh.forward_agent = true
+  config.ssh.insert_key = false
 
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/trusty64"
 
   # enable hostmanager
   config.hostmanager.enabled = true
@@ -77,8 +76,7 @@ Vagrant.configure("2") do |config|
       ip = "172.17.10.#{i+100}"
       config.vm.network :private_network, ip: ip
 
-      #config.vm.provision :shell, path: "install-ansible-dependencies.sh"
-
+	  config.vm.provision "shell", path: "provision.sh"
     end
   end
 end
