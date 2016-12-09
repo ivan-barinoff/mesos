@@ -12,7 +12,7 @@ DISTRO=$(lsb_release -is | tr '[:upper:]' '[:lower:]')
 CODENAME=$(lsb_release -cs)
 
 echo "deb http://repos.mesosphere.com/${DISTRO} ${CODENAME} main" | 
-  sudo tee /etc/apt/sources.list.d/mesosphere.list
+sudo tee /etc/apt/sources.list.d/mesosphere.list
 sudo apt-get -y update
 
 sudo apt-get -y install mesos marathon chronos
